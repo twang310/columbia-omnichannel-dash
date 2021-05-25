@@ -1,0 +1,59 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'columbia'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'columbia'
+
+# These configurations specify where dbt should look for different types of files.
+# The `source-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+source-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+data-paths: ["data"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"  # directory which will store compiled SQL files
+clean-targets:         # directories to be removed by `dbt clean`
+    - "target"
+    - "dbt_modules"
+
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+# In this example config, we tell dbt to build all models in the example/ directory
+# as tables. These settings can be overridden in the individual model files
+# using the `{{ config(...) }}` macro.
+models:
+  columbia:
+      # Applies to all files under models/example/
+      production:
+          materialized: table
+      staging:
+          materialized: ephemeral
+
+vars: 
+        t_campaignStats: google_ads_transfer.p_CampaignStats_4403595678
+        t_campaign: google_ads_transfer.p_Campaign_4403595678
+        t_ads: google_ads_transfer.p_Ad_4403595678
+        t_adStats: google_ads_transfer.p_AdStats_4403595678
+        t_campaignConv: google_ads_transfer.p_CampaignConversionStats_4403595678
+        t_adGroupStats: google_ads_transfer.p_AdGroupStats_4403595678
+        t_adGroup: google_ads_transfer.p_AdGroup_4403595678
+        t_adGroupConv:  google_ads_transfer.p_AdGroupConversionStats_4403595678
+        convName1: '"Conversion 1"'
+        convName2: '"Conversion 2"'
+        convName3: '"Conversion 3"'
+        convName4: '"Conversion 4"'
+        convName5: '"Conversion 5"'
+        convName6: '"Conversion 6"'
+        convName7: '"Conversion 7"'
+        convName8: '"Conversion 8"'
+        convName9: '"Conversion 9"'
